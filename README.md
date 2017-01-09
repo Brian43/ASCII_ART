@@ -1,0 +1,42 @@
+# ASCII_ART
+Solution
+
+import java.util.*;
+import java.io.*;
+import java.math.*;
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+class Solution {
+
+    public static void main(String args[]) {
+        Scanner in = new Scanner(System.in);
+        int L = in.nextInt();
+        int H = in.nextInt();
+        in.nextLine();
+        String T = in.nextLine();
+        for (int i = 0; i < H; i++) {
+            String ROW = in.nextLine();
+           //My value to solve this
+           String preReplaceStr = T.toLowerCase();
+           String input = preReplaceStr.replaceAll("[\\s+@!.,-;:]","?");
+           String alphabet = "abcdefghijklmnopqrstuvwxyz?";
+           String ascii = "";
+           
+           //concats to 'ascii'
+           for(int k=0;k<input.length();k++){
+               int pos = alphabet.indexOf(input.charAt(k))+1;
+               int ascPos = pos*L-L;
+               ascii = ascii.concat(ROW.substring(ascPos,ascPos+L));
+           }
+                 System.out.println(ascii);
+        }
+
+        // Write an action using System.out.println()
+        // To debug: System.err.println("Debug messages...");
+
+        
+    }
+}
