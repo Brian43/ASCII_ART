@@ -1,0 +1,50 @@
+import java.util.*;
+import java.io.*;
+import java.math.*;
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+class Solution {
+
+    public static void main(String args[]) {
+        Scanner in = new Scanner(System.in);
+        int N = in.nextInt(); // Number of elements which make up the association table.
+        in.nextLine();
+        int Q = in.nextInt(); // Number Q of file names to be analyzed.
+        in.nextLine();
+        
+        Map<String,String> mappings = new HashMap<String,String>();
+        
+        for(int i=0;i<N;i++)
+        {
+            // file extension
+            String extension = in.next().toLowerCase();
+            //MIME Type
+            String MT = in.next();
+            in.nextLine();
+            
+            mappings.put(extension,MT);
+        }
+        //for each of the Q filenames,display on a line the corresponding MIME Type.
+        //If there is no corresponding type, then display UNKNOWN
+        for(int i=0;i<Q;i++)
+        {
+            String filename = in.nextLine();
+            
+            if(filename.contains("."))
+            {
+                String extension = filename.substring(filename.lastIndexOf('.')+1).toLowerCase();
+                String type = mappings.get(extension);
+                
+                System.out.println((type == null)?"UNKNOWN":type);
+            }
+            else
+            {
+                System.out.println("UNKNOWN");
+            }
+        }
+    }
+}
+    
