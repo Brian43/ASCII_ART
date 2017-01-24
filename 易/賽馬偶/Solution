@@ -1,0 +1,31 @@
+import java.util.*;
+import java.io.*;
+import java.math.*;
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+class Solution {
+
+    public static void main(String args[]) {
+        Scanner in = new Scanner(System.in);
+        int N = in.nextInt();
+        int lowest = Integer.MAX_VALUE;
+        List<Integer> strengths = new ArrayList<>(N);
+        for (int i = 0; i < N; i++) {
+            int pi = in.nextInt();
+            strengths.add(pi);
+        }
+       
+       Collections.sort(strengths);
+       for(int i=1;i<N;i++){
+           int diffs = Math.abs(strengths.get(i) - strengths.get(i-1));
+           if(diffs <lowest){
+               lowest = diffs;
+           }
+       }
+       
+        System.out.println(lowest);
+    }
+}
